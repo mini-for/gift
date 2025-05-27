@@ -50,18 +50,6 @@
       border-radius: 10px;
       cursor: pointer;
     }
-    .counter {
-      margin-top: 40px;
-      padding: 10px;
-      background: #ffe6dc;
-      border-radius: 10px;
-      width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .counter p {
-      margin: 5px 0;
-    }
   </style>
 </head>
 <body>
@@ -84,21 +72,8 @@
 
   <button id="submitBtn">기부하기</button>
 
-  <div class="counter" id="counterBox">
-    <h3>기부 지표</h3>
-    <p>헌 옷: <span id="count-clothes">0</span>명</p>
-    <p>장난감: <span id="count-toy">0</span>명</p>
-    <p>책: <span id="count-book">0</span>명</p>
-  </div>
-
   <script>
     const selected = new Set();
-    const counts = {
-      "헌 옷": 0,
-      "장난감": 0,
-      "책": 0
-    };
-
     const options = document.querySelectorAll(".option");
 
     options.forEach(option => {
@@ -123,16 +98,7 @@
         alert("최소 1개 이상 선택해주세요!");
         return;
       }
-
-      selected.forEach(type => {
-        counts[type]++;
-      });
-
-      document.getElementById("count-clothes").textContent = counts["헌 옷"];
-      document.getElementById("count-toy").textContent = counts["장난감"];
-      document.getElementById("count-book").textContent = counts["책"];
-
-      alert("기부 항목이 기록되었습니다: " + Array.from(selected).join(", "));
+      alert("기부 항목이 선택되었습니다: " + Array.from(selected).join(", "));
       selected.clear();
       options.forEach(option => option.classList.remove("selected"));
     });
